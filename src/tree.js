@@ -11,7 +11,6 @@ var makeTree = function(){
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-	//debugger;
 	var child = makeTree();
 	child.value = value;
   	this.children.push(child);
@@ -19,7 +18,6 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(value){
-	debugger;
 	if(this.value === value){
     	return true
   	} 
