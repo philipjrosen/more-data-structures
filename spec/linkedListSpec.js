@@ -16,5 +16,29 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
-  // add more tests here to test the functionality of linkedList
+  // describe("linkedList.addToTail", function () {
+  //   it("should takle a value and insert it at the end of the list", function() { 
+
+  //   });
+  // });
+
+  describe("linkedList.contains", function () {
+    it("should take a value that returns true if value is in list, false if not", function() {
+      // var node1 = makeNode(1);
+      // var node2 = makeNode(2);
+      linkedList.addToTail(1);
+      linkedList.addToTail(2);
+      expect(linkedList.contains(1)).toBe(true);
+      expect(linkedList.contains(2)).toBe(true);
+      expect(linkedList.contains(3)).toBe(false);
+    });
+  });
 });
+
+
+
+
+
+
+
+
