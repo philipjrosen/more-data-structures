@@ -17,11 +17,14 @@ var makeLimitedArray = function(limit){
   var limitedArray = {};
   limitedArray.get = function(index){
     checkLimit(index);
-    return storage[index];
+    return storage[index]; 
   };
   limitedArray.set = function(index, value){
     checkLimit(index);
-    storage[index] = value;
+    storage[index] = value; 
+  };
+  limitedArray.remove = function(index) {
+    storage.splice(index,1);
   };
 
   var checkLimit = function(index){
