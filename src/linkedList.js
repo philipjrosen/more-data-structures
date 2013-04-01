@@ -1,48 +1,68 @@
-var makeLinkedList = function() {
-  var linkedList = {};
+// Note: don't use an array to do this.
+var makeLinkedList = function(){
+  var linkedList = {  };
   linkedList.head = null;
   linkedList.tail = null;
 
-  linkedList.addToTail = function(value) {
+  linkedList.addToTail = function(value){
     var node = makeNode(value);
-    if (linkedList.head === null) {
-      linkedList.head = node;
-      linkedList.tail = node;
+    //if the list is empty:
+    if(linkedList.head === null){
+     linkedList.head = node;
+    }else {
+      var currNode = linkedList.head;
+      var i = 0;
+      while(currNode.next !== null){
+        currNode = currNode.next;
+        i++;
+      }
+      currNode.next = node;
     }
-    else {
-      linkedList.tail.next = node;
-      linkedList.tail = node;
-    }
+    linkedList.tail = node; 
   };
 
-  linkedList.contains = function(value) {
-    var current = linkedList.head;
+  linkedList.removeHead = function(){
+    var value = null;
+    if(linkedList.head !== null){
+      value = linkedList.head.value;
+      linkedList.head = linkedList.head.next;
+    }
+    return value; 
+  };
+  //should be away to refactor this to not have to do
+  //separate checks for head and tail
+  linkedList.contains = function(target){
+    var i = 0;
     var bool = false;
-    while (current !==null) {
-      if(current.value === value) {
-        bool = true;
-        break;
+    var currNode = linkedList.head;
+    //what if the value of one of the nodes is 'null'?
+      while(currNode.next !== null){
+        if(currNode.value === target){
+          bool = true;
+        }
+        currNode = currNode.next;
+        i++;
       }
-      else {
-        current = current.next;
-      }
+    //either the head is the only node or we're at the tail
+    if(currNode.next === null){
+      if(currNode.value === target){
+          bool = true;
+        }
     }
     return bool;
   };
 
-  linkedList.removeHead = function(){};
-
   return linkedList;
 };
 
-var makeNode = function(value) {
+var makeNode = function(value){
   var node = {};
   node.value = value;
   node.next = null;
 
-  node.removeNextNode = function() {
-
+  node.removeNextNode = function(){
   };
 
   return node;
 };
+
