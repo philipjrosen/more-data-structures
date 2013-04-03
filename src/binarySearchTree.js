@@ -2,7 +2,7 @@
 
   window.makeBinarySearchTree = function(value){
     var bst = {};
-    bst.right = null;;
+    bst.right = null;
     bst.left = null;
     bst.contains = bstMethods.contains;
     bst.insert = bstMethods.insert;
@@ -16,22 +16,26 @@
   //when I add this function it breaks the first spec    
   
   bstMethods.insert = function(value) {
-    if(value < this.value) {
-      if(this.left === null){
-        this.left = makeBinarySearchTree(value);
-      } else {
-        this.left.insert(value);
-      }
+    var side = value < this.value ? 'left' : 'right';
+    if(this[side]){
+      this[side].insert(value);
     } else {
-      if(this.right === null){
-        this.right = makeBinarySearchTree(value);
-      } else {
-        this.right.insert(value);
-      }
+      this[side] = makeBinarySearchTree(value);
     }
   }
 
-  bstMethods.contains = function() {
+  bstMethods.contains = function(value) {
+    //debugger;
+    if(this.value === value) {
+      return true;
+    }
+    var side = value < this.value ? 'left' : 'right';
+    if(this[side]) {
+      if(this[side].contains(value)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   bstMethods.depthFirstLog = function() {
