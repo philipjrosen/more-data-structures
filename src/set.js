@@ -1,5 +1,5 @@
 var makeSet = function(){
-  var set = Object.create(setPrototype); // fix me
+  var set = Object.create(setPrototype); 
   set._storage = [];
   return set;
 };
@@ -10,7 +10,7 @@ setPrototype.add = function(str){
 	var i =0;
 	while(i < this._storage.length) {
 		if (this._storage[i] === str) {
-			break;
+			return;
 		}
 		i++;
 	}
@@ -18,22 +18,20 @@ setPrototype.add = function(str){
 };
 
 setPrototype.contains = function(str){
-	var bool = false;
 	var i =0;
 	while(i < this._storage.length) {
 		if (this._storage[i] === str) {
-			bool = true;
+			return true;
 		}
 		i++;
 	}
-	return bool;	
+	return false;	
 };
 
 setPrototype.remove = function(str){
 	if(this.contains(str)) {
 		var index = this._storage.indexOf(str);
 		this._storage.splice(index,1);
-		alert(str + " removed from set!");
 	}
 	else { 
 		alert("The set doesn't contain " + str);
