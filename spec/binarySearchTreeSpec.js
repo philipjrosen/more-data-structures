@@ -18,15 +18,17 @@ describe("binarySearchTree", function() {
 
     it("should accept a value and place it in the tree in the correct position", function() {
       binarySearchTree.insert(5);
-      //binarySearchTree.insert(5);
-      //binarySearchTree.insert(15);
-      //binarySearchTree.insert(17);
-      //binarySearchTree.insert(7);
-      //binarySearchTree.insert(12);
-      //binarySearchTree.insert(3);
+      binarySearchTree.insert(15);
+      binarySearchTree.insert(17);
+      binarySearchTree.insert(7);
+      binarySearchTree.insert(12);
+      binarySearchTree.insert(3);
       expect(binarySearchTree.left.value).toEqual(5);
-      //expect(binarySearchTree.right.value).toEqual(15);
-      //expect(binarySearchTree.right.right.value).toEqual(17);
+      expect(binarySearchTree.right.value).toEqual(15);
+      expect(binarySearchTree.right.right.value).toEqual(17);
+      expect(binarySearchTree.left.right.value).toEqual(7);
+      expect(binarySearchTree.right.left.value).toEqual(12);
+      expect(binarySearchTree.left.left.value).toEqual(3);
     });
   });
 
